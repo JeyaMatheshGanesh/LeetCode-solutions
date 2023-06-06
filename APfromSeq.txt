@@ -1,0 +1,14 @@
+class Solution {
+    public boolean canMakeArithmeticProgression(int[] a) {
+           Arrays.sort(a);
+           int sub = Math.abs(a[1] - a[0]);
+           for(int i = 2;i<=a.length-1;i++){
+               if(Math.abs(a[i-1]-a[i])==sub){
+                   continue;
+               }else{
+                   return false;
+               }
+        }
+        return true;
+    }
+    }
