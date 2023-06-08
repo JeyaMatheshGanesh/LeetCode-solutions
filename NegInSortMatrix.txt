@@ -1,0 +1,16 @@
+class Solution {
+    public int countNegatives(int[][] g) {
+        int count = 0;
+        int r = 0;
+        int c = g[0].length-1;
+        while(r<g.length && c>=0){
+            if(g[r][c]>=0){
+                r++;
+            }else{
+                c--;
+                count+=g.length-r;
+            }
+        }
+        return count;
+    }
+}
