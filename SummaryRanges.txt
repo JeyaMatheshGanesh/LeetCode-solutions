@@ -1,0 +1,18 @@
+class Solution {
+    public List<String> summaryRanges(int[] a) {
+        int temp;
+        List<String> l = new ArrayList<>();
+        for (int i = 0; i<a.length; i++) {
+           temp = a[i];
+           while (i+1<a.length && a[i]+1==a[i+1]){
+               i++;
+           }
+           if(temp!=a[i]){
+               l.add(""+temp+"->"+a[i]);
+           }else{
+               l.add(""+temp);
+           }
+        }
+        return l;
+    }
+}
