@@ -1,0 +1,15 @@
+class Solution {
+    public char nextGreatestLetter(char[] s, char t) {
+        int l = 0;
+        int r = s.length-1;
+        while(l<=r){
+            int mid = l+(r-l)/2;
+            if(s[mid]<=t){
+                l = mid+1;
+            }else{
+                r = mid-1;
+            }
+        }
+        return l<s.length ? s[l] : s[0];
+    }
+}
