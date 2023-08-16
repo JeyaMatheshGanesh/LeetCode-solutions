@@ -1,0 +1,21 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        List<String> ans = new ArrayList<>();
+        String[] letters = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        if(digits.length()==0){
+            return ans;
+        }
+        generate(digits,ans,letters,"",0);
+        return ans;
+    }
+    public void generate(String digits,List<String> ans,String[]letters,String combi,int index){
+        if(index==digits.length()){
+            ans.add(combi);
+            return;
+        }
+        String letter = letters[digits.charAt(index)-'0'];
+        for(int i = 0;i<letter.length();i++){
+            generate(digits,ans,letters,combi+letter.charAt(i),index+1);
+        } 
+    }
+}
