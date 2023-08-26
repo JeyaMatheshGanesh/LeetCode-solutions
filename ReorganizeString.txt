@@ -1,0 +1,33 @@
+class Solution {
+    public String reorganizeString(String s) {
+        HashMap<Character,Integer> h = new HashMap<>();
+        for(char c : s.toCharArray()){
+            h.put(c,h.getOrDefault(c,0)+1);
+        }
+        PriorityQueue<Character> p = new PriorityQueue<>((a,b)->h.get(b)-h.get(a)); //Arranging the elements in descending order
+        p.addAll(h.keySet());
+        StringBuilder sb = new StringBuilder();
+        while(p.size()>=2){
+            char ch = p.poll();
+            char ch1 = p.poll(); 
+
+            sb.append(ch);
+            sb.append(ch1);
+
+            h.put(ch,h.get(ch)-1);
+            h.put(ch1,h.get(ch1)-1);
+
+            if(h.get(ch)>0){
+                p.add(ch);
+            }if(h.get(ch1)>0){
+                p.add(ch1);
+            }
+        }
+        if(!p.isEmpty()){
+            char ch2 = p.poll();
+            if(h.get(ch2)>1) return "";
+            sb.append(ch2);
+        }
+        return sb.toString();
+    }
+}
